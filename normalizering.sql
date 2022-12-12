@@ -42,3 +42,10 @@ CREATE TABLE School(
 	CONSTRAINT PRIMARY KEY (SchoolId));
 
 INSERT INTO School (SchoolName, City) SELECT DISTINCT School, City from UNF;
+
+DROP TABLE IF EXISTS StudentSchool;
+CREATE TABLE StudentSchool AS SELECT Id AS StudentId, SchoolId FROM UNF JOIN School ON UNF.School = School.SchoolName;
+
+ALTER TABLE StudentSchool MODIFY COLUMN StudentId INT;
+ALTER TABLE StudentScool MODIFY COLUMN SchoolId INT;
+ALTER TABLE StudentSchool ADD PRIMARY KEY (StudentId, SchoolId);

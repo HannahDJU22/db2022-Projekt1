@@ -1,3 +1,7 @@
+USE iths;
+
+DROP TABLE IF EXISTS UNF;
+
 CREATE TABLE `UNF` (
     `Id` DECIMAL(38, 0) NOT NULL,
     `Name` VARCHAR(26) NOT NULL,
@@ -29,3 +33,12 @@ CREATE TABLE Student(
 ENGINE=INNODB;
 
 INSERT INTO Student (StudentId, Name, Grade) SELECT DISTINCT Id, Name, Grade FROM UNF;
+
+DROP TABLE IF EXISTS School;
+CREATE TABLE School(
+	SchoolId INT NOT NULL auto_increment,
+	SchoolName VARCHAR(50) NOT NULL,
+	City VARCHAR(100),
+	CONSTRAINT PRIMARY KEY (SchoolId));
+
+INSERT INTO School (SchoolName, City) SELECT DISTINCT School, City from UNF;

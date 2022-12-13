@@ -54,3 +54,9 @@ DROP TABLE IF EXISTS PhoneNumbers;
 CREATE TABLE PhoneNumbers AS SELECT DISTINCT UNF.Id AS StudentId, HomePhone, JobPhone, MobilePhone1, MobilePhone2 FROM UNF;
 
 ALTER TABLE PhoneNumbers MODIFY COLUMN StudentId INT;
+
+DROP TABLE IF EXISTS StudentHobbies;
+
+CREATE TABLE StudentHobbies SELECT Id AS StudentId, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',1)),', ',-1) AS Hobby1, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',2)),', ',-1) AS Hobby2,SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',3)),', ',-1) AS Hobby3 from UNF;
+
+ALTER TABLE StudentHobbies MODIFY COLUMN StudentId INT;

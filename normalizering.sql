@@ -47,5 +47,10 @@ DROP TABLE IF EXISTS StudentSchool;
 CREATE TABLE StudentSchool AS SELECT Id AS StudentId, SchoolId FROM UNF JOIN School ON UNF.School = School.SchoolName;
 
 ALTER TABLE StudentSchool MODIFY COLUMN StudentId INT;
-ALTER TABLE StudentScool MODIFY COLUMN SchoolId INT;
+ALTER TABLE StudentSchool MODIFY COLUMN SchoolId INT;
 ALTER TABLE StudentSchool ADD PRIMARY KEY (StudentId, SchoolId);
+
+DROP TABLE IF EXISTS PhoneNumbers;
+CREATE TABLE PhoneNumbers AS SELECT DISTINCT UNF.Id AS StudentId, HomePhone, JobPhone, MobilePhone1, MobilePhone2 FROM UNF;
+
+ALTER TABLE PhoneNumbers MODIFY COLUMN StudentId INT;

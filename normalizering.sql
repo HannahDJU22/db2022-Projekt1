@@ -59,3 +59,13 @@ DROP TABLE IF EXISTS StudentHobbies;
 CREATE TABLE StudentHobbies SELECT Id AS StudentId, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',1)),', ',-1) AS Hobby1, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',2)),', ',-1) AS Hobby2,SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',3)),', ',-1) AS Hobby3 from UNF;
 
 ALTER TABLE StudentHobbies MODIFY COLUMN StudentId INT;
+
+DROP TABLE IF EXISTS StudentGrades;
+
+CREATE TABLE StudentGrades(
+	GradeId INT NOT NULL auto_increment,
+	GradeDescription VARCHAR(50) NOT NULL,
+	StudentId INT NOT NULL,
+	CONSTRAINT PRIMARY KEY (GradeId));
+
+INSERT INTO StudentGrades (GradeDescription, StudentId) SELECT DISTINCT Grade, Id from UNF;

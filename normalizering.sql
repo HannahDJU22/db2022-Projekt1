@@ -28,11 +28,10 @@ DROP TABLE IF EXISTS Student;
 CREATE TABLE Student(
 	StudentId INT NOT NULL auto_increment,
 	Name VARCHAR(30) NOT NULL,
-	Grade VARCHAR(12),
 	CONSTRAINT PRIMARY KEY(StudentId))
 ENGINE=INNODB;
 
-INSERT INTO Student (StudentId, Name, Grade) SELECT DISTINCT Id, Name, Grade FROM UNF;
+INSERT INTO Student (StudentId, Name) SELECT DISTINCT Id, Name FROM UNF;
 
 DROP TABLE IF EXISTS School;
 CREATE TABLE School(

@@ -65,7 +65,6 @@ DROP TABLE IF EXISTS StudentGrades;
 CREATE TABLE StudentGrades(
 	GradeId INT NOT NULL auto_increment,
 	GradeDescription VARCHAR(50) NOT NULL,
-	StudentId INT NOT NULL,
 	CONSTRAINT PRIMARY KEY (GradeId));
 
-INSERT INTO StudentGrades (GradeDescription, StudentId) SELECT DISTINCT Grade, Id from UNF;
+INSERT INTO StudentGrades (GradeDescription) SELECT DISTINCT Grade from UNF;

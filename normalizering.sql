@@ -60,11 +60,15 @@ CREATE TABLE StudentHobbies SELECT Id AS StudentId, SUBSTRING_INDEX((SUBSTRING_I
 
 ALTER TABLE StudentHobbies MODIFY COLUMN StudentId INT;
 
-DROP TABLE IF EXISTS StudentGrades;
+DROP TABLE IF EXISTS Grades;
 
-CREATE TABLE StudentGrades(
+CREATE TABLE Grades(
 	GradeId INT NOT NULL auto_increment,
 	GradeDescription VARCHAR(50) NOT NULL,
 	CONSTRAINT PRIMARY KEY (GradeId));
 
-INSERT INTO StudentGrades (GradeDescription) SELECT DISTINCT Grade from UNF;
+INSERT INTO Grades (GradeDescription) SELECT DISTINCT Grade from UNF;
+
+DROP TABLE IF EXISTS StudentGrades;
+
+CREATE TABLE StudentGrades AS SELECT Id AS StudentId, GradeId FROM UNF JOIN Grades ON UNF.Grade = Grades.GradeDescription;

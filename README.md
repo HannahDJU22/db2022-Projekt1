@@ -2,12 +2,14 @@
 Inlämning Projekt1
 
 ## ER-diagram
-STUDENT ||--o{StudentSchool : allows
+```mermaid
+flowchart TD
+A[STUDENT] ||--o B{StudentSchool};
 STUDENT {
 	int StudentId
 	string Name
 	}
-SCHOOL ||--o{StudentSchool : is
+B[SCHOOL] ||--o C{StudentSchool};
 SCHOOL {
 	int SchoolId
 	string SchoolName

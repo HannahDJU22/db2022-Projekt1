@@ -4,7 +4,7 @@ Inlämning Projekt1
 ## ER-diagram
 ```mermaid
 flowchart TD;
-STUDENT --> StudentSchool;
+STUDENT --||o StudentSchool;
 SCHOOL --> StudentSchool;
 STUDENT --> PHONENUMBERS;
 STUDENT --> HOBBIES;

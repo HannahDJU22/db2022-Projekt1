@@ -4,14 +4,15 @@ Inlämning Projekt1
 ## ER-diagram
 ```mermaid
 flowchart TD
-A[STUDENT] ||--o B{StudentSchool};
+STUDENT ||--o {StudentSchool};
 STUDENT {
 	int StudentId
 	string Name
 	}
-B[SCHOOL] ||--o C{StudentSchool};
+SCHOOL ||--o {StudentSchool};
 SCHOOL {
 	int SchoolId
 	string SchoolName
 	string City
 	}
+```

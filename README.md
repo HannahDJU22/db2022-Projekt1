@@ -3,7 +3,7 @@ Inlämning Projekt1
 
 ## ER-diagram
 ```mermaid
-flowchart TD
+flowchart TD;
 STUDENT ||--o {StudentSchool};
 STUDENT {
 	int StudentId

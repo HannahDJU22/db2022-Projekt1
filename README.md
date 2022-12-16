@@ -6,8 +6,8 @@ Inlämning Projekt1
 flowchart TD;
 STUDENT --> StudentSchool;
 SCHOOL --> StudentSchool;
-STUDENT --> PhoneNumbers;
-STUDENT --> Hobbies;
+STUDENT --> PHONENUMBERS;
+STUDENT --> HOBBIES;
 STUDENT --> StudentGrades;
 GRADES --> StudentGrades;
 ```

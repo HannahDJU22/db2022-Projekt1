@@ -10,5 +10,5 @@ SCHOOL ||--|{ StudentSchool : uses
 STUDENT ||--|{ PHONENUMBERS : uses
 STUDENT ||--o{ HOBBIES : uses
 STUDENT ||--|| StudentGrades : uses
-GRADES ||--|{ StudentGrades : contains
+GRADES ||--|| StudentGrades : contains
 ```

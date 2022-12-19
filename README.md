@@ -9,11 +9,12 @@ erDiagram
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-erDiagram TD;
-STUDENT ||--o{ StudentSchool : has;
-SCHOOL ||--o{ StudentSchool : has;
-STUDENT --x PHONENUMBERS : has;
-STUDENT --> HOBBIES : has;
-STUDENT --> StudentGrades : has;
-GRADES --> StudentGrades : has;
+```mermaid
+erDiagram
+STUDENT ||--o{ StudentSchool : has
+SCHOOL ||--o{ StudentSchool : has
+STUDENT --x PHONENUMBERS : has
+STUDENT --> HOBBIES : has
+STUDENT --> StudentGrades : has
+GRADES --> StudentGrades : has
 ```

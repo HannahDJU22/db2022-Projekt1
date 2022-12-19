@@ -3,7 +3,7 @@ Inlämning Projekt1
 
 ## ER-diagram
 ```mermaid
-flowchart TD;
+erDiagram TD;
 STUDENT ||--o{ StudentSchool : has;
 SCHOOL ||--o{ StudentSchool : has;
 STUDENT --x PHONENUMBERS : has;

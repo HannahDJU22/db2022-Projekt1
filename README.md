@@ -8,7 +8,7 @@ erDiagram
 STUDENT ||--|{ StudentSchool : uses
 SCHOOL ||--|{ StudentSchool : uses
 STUDENT ||--|{ PHONENUMBERS : uses
-STUDENT ||--|{ HOBBIES : uses
-STUDENT ||--|{ StudentGrades : uses
+STUDENT ||--o{ HOBBIES : uses
+STUDENT ||--|| StudentGrades : uses
 GRADES ||--|{ StudentGrades : contains
 ```

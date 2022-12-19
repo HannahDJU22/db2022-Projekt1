@@ -7,8 +7,8 @@ Inlämning Projekt1
 erDiagram
 STUDENT ||--|{ StudentSchool : uses
 SCHOOL ||--|{ StudentSchool : uses
-STUDENT |--|{ PHONENUMBERS : uses
+STUDENT ||--|{ PHONENUMBERS : uses
 STUDENT ||--|{ HOBBIES : uses
-STUDENT }|..|{ StudentGrades : uses
+STUDENT ||--|{ StudentGrades : uses
 GRADES ||--|{ StudentGrades : contains
 ```

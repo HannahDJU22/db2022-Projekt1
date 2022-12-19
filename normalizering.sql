@@ -49,10 +49,20 @@ ALTER TABLE StudentSchool MODIFY COLUMN StudentId INT;
 ALTER TABLE StudentSchool MODIFY COLUMN SchoolId INT;
 ALTER TABLE StudentSchool ADD PRIMARY KEY (StudentId, SchoolId);
 
-DROP TABLE IF EXISTS PhoneNumbers;
-CREATE TABLE PhoneNumbers AS SELECT DISTINCT UNF.Id AS StudentId, HomePhone, JobPhone, MobilePhone1, MobilePhone2 FROM UNF;
+DROP TABLE IF EXISTS PHONENUMBERS;
+CREATE TABLE PHONENUMBERS(
+	PhoneId INT NOT NULL auto_increment,
+	StudentId INT NOT NULL,
+	PhoneType VARCHAR(35),
+	Number VARCHAR(35) NOT NULL,
+	CONSTRAINT PRIMARY KEY(PhoneId));
 
-ALTER TABLE PhoneNumbers MODIFY COLUMN StudentId INT;
+INSERT INTO PHONENUMBERS(StudentId, PhoneType, Number) SELECT Id AS StudentId, "Home" AS PhoneType, HomePhone AS Number from UNF WHERE HomePhone IS NOT NULL AND HomePhone != ''
+UNION SELECT Id AS StudentId, "Job" AS PhoneType, JobPhone AS Number FROM UNF WHERE JobPhone IS NOT NULL AND JobPhone != ''
+UNION SELECT Id AS StudentId, "Mobile" AS PhoneType, MobilePhone1 AS Number FROM UNF WHERE MobilePhone1 IS NOT NULL AND MobilePhone1 != ''
+UNION SELECT Id AS StudentId, "Mobile" AS PhoneType, MobilePhone2 AS Number FROM UNF WHERE MobilePhone2 IS NOT NULL AND MobilePhone2 != '';
+
+CREATE VIEW PhoneList AS SELECT StudentId, group_concat(Number) FROM PHONENUMBERS GROUP BY StudentId;
 
 DROP TABLE IF EXISTS StudentHobbies;
 

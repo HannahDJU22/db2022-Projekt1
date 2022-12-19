@@ -2,14 +2,13 @@
 Inlämning Projekt1
 
 ## ER-diagram
-STUDENT ||--o{StudentSchool : allows
-STUDENT {
-	int StudentId
-	string Name
-	}
-SCHOOL ||--o{StudentSchool : is
-SCHOOL {
-	int SchoolId
-	string SchoolName
-	string City
-	}
+
+```mermaid
+erDiagram
+STUDENT ||--|{ StudentSchool : uses
+SCHOOL ||--|{ StudentSchool : uses
+STUDENT ||--|{ PHONENUMBERS : uses
+STUDENT ||--o{ HOBBIES : uses
+STUDENT ||--|| StudentGrades : uses
+GRADES ||--|| StudentGrades : contains
+```

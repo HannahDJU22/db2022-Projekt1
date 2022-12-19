@@ -11,10 +11,10 @@ erDiagram
 
 ```mermaid
 erDiagram
-STUDENT ||--o{ StudentSchool : has
-SCHOOL ||--o{ StudentSchool : has
-STUDENT --x PHONENUMBERS : has
-STUDENT --> HOBBIES : has
-STUDENT --> StudentGrades : has
-GRADES --> StudentGrades : has
+STUDENT ||--o{ StudentSchool : uses
+SCHOOL ||--o{ StudentSchool : uses
+STUDENT --x PHONENUMBERS : uses
+STUDENT ||--|{ HOBBIES : uses
+STUDENT }|..|{ StudentGrades : uses
+GRADES --> StudentGrades : contains
 ```

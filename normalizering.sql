@@ -74,7 +74,9 @@ CREATE VIEW PhoneList AS SELECT StudentId, group_concat(Number) AS Numbers FROM 
 
 DROP TABLE IF EXISTS StudentHobbies;
 
-CREATE TABLE StudentHobbies SELECT Id AS StudentId, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',1)),', ',-1) AS Hobby1, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',2)),', ',-1) AS Hobby2,SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',3)),', ',-1) AS Hobby3 from UNF;
+CREATE TABLE StudentHobbies SELECT Id AS StudentId, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',1)),', ',-1) AS Hobby FROM UNF
+UNION SELECT Id AS StudentId, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',2)),', ',-1) AS Hobby FROM UNF
+UNION SELECT Id AS StudentId, SUBSTRING_INDEX((SUBSTRING_INDEX(Hobbies,', ',3)),', ',-1) AS Hobby from UNF;
 
 ALTER TABLE StudentHobbies MODIFY COLUMN StudentId INT;
 

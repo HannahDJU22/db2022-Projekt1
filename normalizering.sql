@@ -24,6 +24,12 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
+UPDATE UNF SET Grade = 'Awesome' WHERE Grade = 'Awessome';
+UPDATE UNF SET Grade = 'First class' WHERE Grade = 'First-class';
+UPDATE UNF SET Grade = 'First class' WHERE Grade = 'Firstclass';
+UPDATE UNF SET Grade = 'Gorgeus' WHERE Grade = 'Gorgetus';
+UPDATE UNF SET Grade = 'Excellent' WHERE Grade = 'Eksellent';
+
 DROP TABLE IF EXISTS STUDENT;
 CREATE TABLE STUDENT(
 	StudentId INT NOT NULL auto_increment,

@@ -5,9 +5,9 @@ Inlämning Projekt1
 
 ```mermaid
 erDiagram
-STUDENT ||--o{ StudentSchool : uses
-SCHOOL ||--o{ StudentSchool : uses
-STUDENT ||--o{ PHONENUMBERS : uses
+STUDENT ||--|{ StudentSchool : uses
+SCHOOL ||--|{ StudentSchool : uses
+STUDENT |--|{ PHONENUMBERS : uses
 STUDENT ||--|{ HOBBIES : uses
 STUDENT }|..|{ StudentGrades : uses
 GRADES ||--|{ StudentGrades : contains

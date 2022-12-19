@@ -50,7 +50,7 @@ ALTER TABLE StudentSchool MODIFY COLUMN SchoolId INT;
 ALTER TABLE StudentSchool ADD PRIMARY KEY (StudentId, SchoolId);
 
 DROP TABLE IF EXISTS PHONENUMBERS;
-<<<<<<< HEAD
+
 CREATE TABLE PHONENUMBERS(
 	PhoneId INT NOT NULL auto_increment,
 	StudentId INT NOT NULL,
@@ -64,11 +64,6 @@ UNION SELECT Id AS StudentId, "Mobile" AS PhoneType, MobilePhone1 AS Number FROM
 UNION SELECT Id AS StudentId, "Mobile" AS PhoneType, MobilePhone2 AS Number FROM UNF WHERE MobilePhone2 IS NOT NULL AND MobilePhone2 != '';
 
 CREATE VIEW PhoneList AS SELECT StudentId, group_concat(Number) FROM PHONENUMBERS GROUP BY StudentId;
-=======
-CREATE TABLE PHONENUMBERS AS SELECT DISTINCT UNF.Id AS StudentId, HomePhone, JobPhone, MobilePhone1, MobilePhone2 FROM UNF;
-
-ALTER TABLE PHONENUMBERS MODIFY COLUMN StudentId INT;
->>>>>>> d361ad33c3be8092560a0c77d4b04c7e7a9723dd
 
 DROP TABLE IF EXISTS StudentHobbies;
 

@@ -36,7 +36,7 @@ Grade{
 int GradeId
 varchar GradeDescription
 }
-StudentGrades{
+StudentGrade{
 int StudentId
 int GradeId
 }
@@ -45,6 +45,6 @@ School ||--|{ StudentSchool : uses
 Student ||--|{ PhoneNumber : uses
 Student ||--|{ StudentHobby : uses
 Hobby ||--|{ StudentHobby : uses
-Student ||--|| StudentGrades : uses
-Grade ||--|| StudentGrades : contains
+Student ||--|| StudentGrade : uses
+Grade ||--|| StudentGrade : contains
 ```

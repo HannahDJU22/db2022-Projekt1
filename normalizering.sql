@@ -96,6 +96,6 @@ CREATE TABLE Grade(
 
 INSERT INTO Grade (GradeDescription) SELECT DISTINCT Grade from UNF;
 
-DROP TABLE IF EXISTS StudentGrades;
+DROP TABLE IF EXISTS StudentGrade;
 
-CREATE TABLE StudentGrades AS SELECT DISTINCT Id AS StudentId, GradeId FROM UNF JOIN Grade ON UNF.Grade = Grade.GradeDescription;
+CREATE TABLE StudentGrade AS SELECT DISTINCT Id AS StudentId, GradeId FROM UNF JOIN Grade ON UNF.Grade = Grade.GradeDescription;

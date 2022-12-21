@@ -43,7 +43,8 @@ int GradeId
 Student ||--|{ StudentSchool : uses
 School ||--|{ StudentSchool : uses
 Student ||--|{ PhoneNumber : uses
-Student ||--o{ Hobby : uses
+Student ||--|{ StudentHobby : uses
+Hobby ||--|{ StudentHobby : uses
 Student ||--|| StudentGrades : uses
 Grade ||--|| StudentGrades : contains
 ```

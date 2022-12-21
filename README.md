@@ -5,14 +5,45 @@ Inlämning Projekt1
 
 ```mermaid
 erDiagram
-STUDENT {
+Student {
 int StudentId
 varchar Name
 }
-STUDENT ||--|{ StudentSchool : uses
-SCHOOL ||--|{ StudentSchool : uses
-STUDENT ||--|{ PHONENUMBERS : uses
-STUDENT ||--o{ HOBBIES : uses
-STUDENT ||--|| StudentGrades : uses
-GRADES ||--|| StudentGrades : contains
+School {
+int SchoolId
+varchar SchoolName
+varchar City
+}
+StudentSchool{
+int StudentId
+int SchoolId
+}
+PhoneNumber{
+int PhoneId
+int StudentId
+varchar PhoneType
+varchar Number
+}
+Hobby{
+int HobbyId
+varchar HobbyType
+}
+StudentHobby{
+int StudentId
+int HobbyId
+}
+Grade{
+int GradeId
+varchar GradeDescription
+}
+StudentGrades{
+int StudentId
+int GradeId
+}
+Student ||--|{ StudentSchool : uses
+School ||--|{ StudentSchool : uses
+Student ||--|{ PhoneNumber : uses
+Student ||--o{ Hobby : uses
+Student ||--|| StudentGrades : uses
+Grade ||--|| StudentGrades : contains
 ```

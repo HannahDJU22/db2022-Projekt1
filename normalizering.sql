@@ -30,72 +30,72 @@ UPDATE UNF SET Grade = 'First class' WHERE Grade = 'Firstclass';
 UPDATE UNF SET Grade = 'Gorgeus' WHERE Grade = 'Gorgetus';
 UPDATE UNF SET Grade = 'Excellent' WHERE Grade = 'Eksellent';
 
-DROP TABLE IF EXISTS STUDENT;
-CREATE TABLE STUDENT(
+DROP TABLE IF EXISTS Student;
+CREATE TABLE Student(
 	StudentId INT NOT NULL auto_increment,
 	Name VARCHAR(30) NOT NULL,
 	CONSTRAINT PRIMARY KEY(StudentId))
 ENGINE=INNODB;
 
-INSERT INTO STUDENT (StudentId, Name) SELECT DISTINCT Id, Name FROM UNF;
+INSERT INTO Student (StudentId, Name) SELECT DISTINCT Id, Name FROM UNF;
 
-DROP TABLE IF EXISTS SCHOOL;
-CREATE TABLE SCHOOL(
+DROP TABLE IF EXISTS School;
+CREATE TABLE School(
 	SchoolId INT NOT NULL auto_increment,
 	SchoolName VARCHAR(50) NOT NULL,
 	City VARCHAR(100),
 	CONSTRAINT PRIMARY KEY (SchoolId));
 
-INSERT INTO SCHOOL (SchoolName, City) SELECT DISTINCT School, City from UNF;
+INSERT INTO School (SchoolName, City) SELECT DISTINCT School, City from UNF;
 
 DROP TABLE IF EXISTS StudentSchool;
-CREATE TABLE StudentSchool AS SELECT Id AS StudentId, SchoolId FROM UNF JOIN SCHOOL ON UNF.School = SCHOOL.SchoolName;
+CREATE TABLE StudentSchool AS SELECT Id AS StudentId, SchoolId FROM UNF JOIN School ON UNF.School = School.SchoolName;
 
 ALTER TABLE StudentSchool MODIFY COLUMN StudentId INT;
 ALTER TABLE StudentSchool MODIFY COLUMN SchoolId INT;
 ALTER TABLE StudentSchool ADD PRIMARY KEY (StudentId, SchoolId);
 
-DROP TABLE IF EXISTS PHONENUMBERS;
+DROP TABLE IF EXISTS PhoneNumber;
 
-CREATE TABLE PHONENUMBERS(
+CREATE TABLE PhoneNumber(
 	PhoneId INT NOT NULL auto_increment,
 	StudentId INT NOT NULL,
 	PhoneType VARCHAR(35),
 	Number VARCHAR(35) NOT NULL,
 	CONSTRAINT PRIMARY KEY(PhoneId));
 
-INSERT INTO PHONENUMBERS(StudentId, PhoneType, Number) SELECT Id AS StudentId, "Home" AS PhoneType, HomePhone AS Number from UNF WHERE HomePhone IS NOT NULL AND HomePhone != ''
+INSERT INTO PhoneNumber(StudentId, PhoneType, Number) SELECT Id AS StudentId, "Home" AS PhoneType, HomePhone AS Number from UNF WHERE HomePhone IS NOT NULL AND HomePhone != ''
 UNION SELECT Id AS StudentId, "Job" AS PhoneType, JobPhone AS Number FROM UNF WHERE JobPhone IS NOT NULL AND JobPhone != ''
 UNION SELECT Id AS StudentId, "Mobile" AS PhoneType, MobilePhone1 AS Number FROM UNF WHERE MobilePhone1 IS NOT NULL AND MobilePhone1 != ''
 UNION SELECT Id AS StudentId, "Mobile" AS PhoneType, MobilePhone2 AS Number FROM UNF WHERE MobilePhone2 IS NOT NULL AND MobilePhone2 != '';
 
 DROP VIEW IF EXISTS PhoneList;
-CREATE VIEW PhoneList AS SELECT StudentId, group_concat(Number) AS Numbers FROM PHONENUMBERS GROUP BY StudentId;
+CREATE VIEW PhoneList AS SELECT StudentId, group_concat(Number) AS Numbers FROM PhoneNumber GROUP BY StudentId;
 
-DROP TABLE IF EXISTS HOBBIES;
+DROP TABLE IF EXISTS Hobby;
 
-CREATE TABLE HOBBIES(
+CREATE TABLE Hobby(
 	HobbyId INT NOT NULL auto_increment,
-	Hobby VARCHAR(40),
+	HobbyType VARCHAR(40),
 	CONSTRAINT PRIMARY KEY(HobbyId));
 
-INSERT INTO HOBBIES (Hobby) SELECT SUBSTRING_INDEX(Hobbies,', ',1) FROM UNF
+INSERT INTO Hobby (HobbyType) SELECT SUBSTRING_INDEX(Hobbies,', ',1) FROM UNF
 UNION SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(Hobbies,', ',-2),', ',1) FROM UNF
 UNION SELECT SUBSTRING_INDEX(Hobbies,', ',-1) FROM UNF;
 
-DROP TABLE IF EXISTS StudentHobbies;
+DROP TABLE IF EXISTS StudentHobby;
 
-CREATE TABLE StudentHobbies AS SELECT Id AS StudentId, HobbyId FROM UNF JOIN HOBBIES ON UNF.Hobbies = HOBBIES.Hobby;
+CREATE TABLE StudentHobby AS SELECT Id AS StudentId, HobbyId FROM UNF JOIN Hobby ON UNF.Hobbies = Hobby.HobbyType;
 
-DROP TABLE IF EXISTS GRADES;
+DROP TABLE IF EXISTS Grade;
 
-CREATE TABLE GRADES(
+CREATE TABLE Grade(
 	GradeId INT NOT NULL auto_increment,
 	GradeDescription VARCHAR(50) NOT NULL,
 	CONSTRAINT PRIMARY KEY (GradeId));
 
-INSERT INTO GRADES (GradeDescription) SELECT DISTINCT Grade from UNF;
+INSERT INTO Grade (GradeDescription) SELECT DISTINCT Grade from UNF;
 
 DROP TABLE IF EXISTS StudentGrades;
 
-CREATE TABLE StudentGrades AS SELECT DISTINCT Id AS StudentId, GradeId FROM UNF JOIN GRADES ON UNF.Grade = GRADES.GradeDescription;
+CREATE TABLE StudentGrades AS SELECT DISTINCT Id AS StudentId, GradeId FROM UNF JOIN Grade ON UNF.Grade = Grade.GradeDescription;

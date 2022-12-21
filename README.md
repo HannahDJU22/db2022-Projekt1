@@ -5,6 +5,10 @@ Inlämning Projekt1
 
 ```mermaid
 erDiagram
+STUDENT {
+int StudentId
+varchar Name
+}
 STUDENT ||--|{ StudentSchool : uses
 SCHOOL ||--|{ StudentSchool : uses
 STUDENT ||--|{ PHONENUMBERS : uses

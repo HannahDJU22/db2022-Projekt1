@@ -91,6 +91,10 @@ DROP TABLE IF EXISTS StudentHobby;
 
 CREATE TABLE StudentHobby AS SELECT StudentId, HobbyId FROM HobbyTemp JOIN Hobby ON HobbyTemp.Hobby = Hobby.HobbyType;
 
+ALTER TABLE StudentHobby MODIFY COLUMN StudentId INT;
+ALTER TABLE StudentHobby MODIFY COLUMN HobbyId INT;
+ALTER TABLE StudentHobby ADD PRIMARY KEY (StudentId, HobbyId);
+
 DROP TABLE IF EXISTS Grade;
 
 CREATE TABLE Grade(
@@ -103,3 +107,7 @@ INSERT INTO Grade (GradeDescription) SELECT DISTINCT Grade from UNF;
 DROP TABLE IF EXISTS StudentGrade;
 
 CREATE TABLE StudentGrade AS SELECT DISTINCT Id AS StudentId, GradeId FROM UNF JOIN Grade ON UNF.Grade = Grade.GradeDescription;
+
+ALTER TABLE StudentGrade MODIFY COLUMN StudentId INT;
+ALTER TABLE StudentGrade MODIFY COLUMN GradeId INT;
+ALTER TABLE StudentGrade ADD PRIMARY KEY (StudentId, GradeId);

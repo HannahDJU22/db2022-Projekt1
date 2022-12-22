@@ -72,6 +72,12 @@ UNION SELECT Id AS StudentId, "Mobile" AS PhoneType, MobilePhone2 AS Number FROM
 DROP VIEW IF EXISTS PhoneList;
 CREATE VIEW PhoneList AS SELECT StudentId, group_concat(Number) AS Numbers FROM PhoneNumber GROUP BY StudentId;
 
+DROP VIEW IF EXISTS HobbyTemp;
+
+CREATE VIEW HobbyTemp AS SELECT Id AS StudentId, SUBSTRING_INDEX(Hobbies,', ',1) AS Hobby FROM UNF
+UNION SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(Hobbies,', ',-2),', ',1) AS Hobby FROM UNF
+UNION SELECT SUBSTRING_INDEX(Hobbies,', ',-1) AS Hobby FROM UNF; 
+
 DROP TABLE IF EXISTS Hobby;
 
 CREATE TABLE Hobby(
@@ -79,13 +85,11 @@ CREATE TABLE Hobby(
 	HobbyType VARCHAR(40),
 	CONSTRAINT PRIMARY KEY(HobbyId));
 
-INSERT INTO Hobby (HobbyType) SELECT SUBSTRING_INDEX(Hobbies,', ',1) FROM UNF
-UNION SELECT SUBSTRING_INDEX(SUBSTRING_INDEX(Hobbies,', ',-2),', ',1) FROM UNF
-UNION SELECT SUBSTRING_INDEX(Hobbies,', ',-1) FROM UNF;
+INSERT INTO Hobby (HobbyType) SELECT DISTINCT Hobby FROM HobbyTemp;
 
 DROP TABLE IF EXISTS StudentHobby;
 
-CREATE TABLE StudentHobby AS SELECT Id AS StudentId, HobbyId FROM UNF JOIN Hobby ON UNF.Hobbies = Hobby.HobbyType;
+CREATE TABLE StudentHobby AS SELECT StudentId, HobbyId FROM HobbyTemp JOIN Hobby ON HobbyTemp.Hobby = Hobby.HobbyType;
 
 DROP TABLE IF EXISTS Grade;
 

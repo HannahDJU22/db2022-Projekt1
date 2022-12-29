@@ -51,9 +51,9 @@ text Numbers
 Student ||--|{ StudentSchool : uses
 School ||--|{ StudentSchool : uses
 Student ||--|{ PhoneNumber : has
-Student ||--|{ StudentHobby : has
+Student ||--o{ StudentHobby : has
 Hobby ||--|{ StudentHobby : uses
-Student ||--|| StudentGrade : has
+Student ||--|{ StudentGrade : has
 Grade ||--|| StudentGrade : uses
 Hobby ||--|| HobbyTemp : uses
 PhoneList ||--|| PhoneNumber : uses

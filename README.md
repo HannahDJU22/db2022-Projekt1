@@ -40,11 +40,19 @@ StudentGrade{
 int StudentId
 int GradeId
 }
+HobbyTemp{
+int StudentId
+varchar Hobby
+}
+PhoneList{
+int StudentId
+text Numbers
+}
 Student ||--|{ StudentSchool : uses
 School ||--|{ StudentSchool : uses
 Student ||--|{ PhoneNumber : has
-Student ||--|{ StudentHobby : uses
+Student ||--|{ StudentHobby : has
 Hobby ||--|{ StudentHobby : uses
-Student ||--|| StudentGrade : uses
+Student ||--|| StudentGrade : has
 Grade ||--|| StudentGrade : uses
 ```

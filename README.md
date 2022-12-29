@@ -55,4 +55,6 @@ Student ||--|{ StudentHobby : has
 Hobby ||--|{ StudentHobby : uses
 Student ||--|| StudentGrade : has
 Grade ||--|| StudentGrade : uses
+Hobby ||--|| HobbyTemp : uses
+PhoneList ||--|| PhoneNumber : uses
 ```

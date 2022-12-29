@@ -5,11 +5,11 @@ Inlämning Projekt1
 
 ```mermaid
 erDiagram
-**Student** {
+Student{
 int StudentId
 varchar Name
 }
-**School** {
+School{
 int SchoolId
 varchar SchoolName
 varchar City
@@ -18,13 +18,13 @@ StudentSchool{
 int StudentId
 int SchoolId
 }
-**PhoneNumber**{
+PhoneNumber{
 int PhoneId
 int StudentId
 varchar PhoneType
 varchar Number
 }
-**Hobby**{
+Hobby{
 int HobbyId
 varchar HobbyType
 }
@@ -32,7 +32,7 @@ StudentHobby{
 int StudentId
 int HobbyId
 }
-**Grade**{
+Grade{
 int GradeId
 varchar GradeDescription
 }
@@ -40,11 +40,11 @@ StudentGrade{
 int StudentId
 int GradeId
 }
-*HobbyTemp*{
+HobbyTemp{
 int StudentId
 varchar Hobby
 }
-*PhoneList*{
+PhoneList{
 int StudentId
 text Numbers
 }

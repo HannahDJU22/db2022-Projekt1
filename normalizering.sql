@@ -44,7 +44,8 @@ CREATE TABLE School(
 	SchoolId INT NOT NULL auto_increment,
 	SchoolName VARCHAR(50) NOT NULL,
 	City VARCHAR(100),
-	CONSTRAINT PRIMARY KEY (SchoolId));
+	CONSTRAINT PRIMARY KEY (SchoolId))
+ENGINE=INNODB;
 
 INSERT INTO School (SchoolName, City) SELECT DISTINCT School, City from UNF;
 
@@ -62,7 +63,8 @@ CREATE TABLE PhoneNumber(
 	StudentId INT NOT NULL,
 	PhoneType VARCHAR(35),
 	Number VARCHAR(35) NOT NULL,
-	CONSTRAINT PRIMARY KEY(PhoneId));
+	CONSTRAINT PRIMARY KEY(PhoneId))
+ENGINE=INNODB;
 
 INSERT INTO PhoneNumber(StudentId, PhoneType, Number) SELECT Id AS StudentId, "Home" AS PhoneType, HomePhone AS Number from UNF WHERE HomePhone IS NOT NULL AND HomePhone != ''
 UNION SELECT Id AS StudentId, "Job" AS PhoneType, JobPhone AS Number FROM UNF WHERE JobPhone IS NOT NULL AND JobPhone != ''
@@ -83,7 +85,8 @@ DROP TABLE IF EXISTS Hobby;
 CREATE TABLE Hobby(
 	HobbyId INT NOT NULL auto_increment,
 	HobbyType VARCHAR(40),
-	CONSTRAINT PRIMARY KEY(HobbyId));
+	CONSTRAINT PRIMARY KEY(HobbyId))
+ENGINE=INNODB;
 
 INSERT INTO Hobby (HobbyType) SELECT DISTINCT Hobby FROM HobbyTemp;
 
@@ -100,7 +103,8 @@ DROP TABLE IF EXISTS Grade;
 CREATE TABLE Grade(
 	GradeId INT NOT NULL auto_increment,
 	GradeDescription VARCHAR(50) NOT NULL,
-	CONSTRAINT PRIMARY KEY (GradeId));
+	CONSTRAINT PRIMARY KEY (GradeId))
+ENGINE=INNODB;
 
 INSERT INTO Grade (GradeDescription) SELECT DISTINCT Grade from UNF;
 

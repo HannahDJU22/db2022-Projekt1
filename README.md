@@ -48,12 +48,12 @@ PhoneList{
 int StudentId
 text Numbers
 }
-Student ||--|{ StudentSchool : uses
-School ||--|{ StudentSchool : uses
-Student ||--|{ PhoneNumber : has
+Student ||--o{ StudentSchool : attends
+School ||--o{ StudentSchool : enrolls
+Student ||--o{ PhoneNumber : has
 Student ||--o{ StudentHobby : has
-Hobby ||--|{ StudentHobby : uses
-Student ||--|{ StudentGrade : has
+Hobby ||--|{ StudentHobby : involves
+Student }|--|o StudentGrade : has
 Grade ||--|| StudentGrade : uses
 Hobby ||--|| HobbyTemp : uses
 PhoneList ||--|| PhoneNumber : uses

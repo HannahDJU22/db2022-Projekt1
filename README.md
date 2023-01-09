@@ -53,8 +53,8 @@ School ||--o{ StudentSchool : enrolls
 Student ||--o{ PhoneNumber : has
 Student ||--o{ StudentHobby : has
 Hobby ||--|{ StudentHobby : involves
-Student }|--|o StudentGrade : has
-Grade ||--|| StudentGrade : uses
+Student ||--|o StudentGrade : has
+Grade ||--o{ StudentGrade : uses
 Hobby ||--|| HobbyTemp : uses
 PhoneList ||--|| PhoneNumber : uses
 ```

@@ -48,13 +48,13 @@ PhoneList{
 int StudentId
 text Numbers
 }
-Student ||--o{ StudentSchool : attends
-School ||--o{ StudentSchool : enrolls
+Student }o--o{ StudentSchool : attends
+School }o--o{ StudentSchool : enrolls
 Student ||--o{ PhoneNumber : has
-Student ||--o{ StudentHobby : has
-Hobby ||--|{ StudentHobby : involves
-Student ||--|o StudentGrade : has
-Grade ||--o{ StudentGrade : uses
+Student }o--o{ StudentHobby : has
+Hobby }o--o{ StudentHobby : involves
+Student }o--|o StudentGrade : has
+Grade |o--o{ StudentGrade : uses
 Hobby ||--|| HobbyTemp : uses
 PhoneList ||--|| PhoneNumber : uses
 ```

@@ -63,17 +63,3 @@ PhoneList ||--|| PhoneNumber : uses
 
 Kör scriptet till databasen
 	docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql
-
-Logga in i databasen
-	docker exec -it iths-mysql bash
-	mysql -uiths -piths
-
-Skriv kommando i SQL
-	use iths;
-	SELECT Name, SchoolName, GradeDescription, HobbyType FROM Student
-	JOIN StudentSchool USING(StudentId)
-	JOIN School USING(SchoolId)
-	JOIN StudentGrade USING(StudentId)
-	JOIN Grade USING(GradeId)
-	JOIN StudentHobby USING(StudentId)
-	JOIN Hobby USING(HobbyId);

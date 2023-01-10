@@ -64,14 +64,16 @@ Kör scriptet till databasen
 ```
 docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql
 ```
-Logga in i databasen (för PC, kom ihåg winpty före docker)
+Logga in i databasen (*för PC, kom ihåg winpty före docker*)
 ```
 docker exec -it iths-mysql bash
+
 mysql -uiths -piths
 ```
 Skriv SQL-kommando i databasen
 ```
 use iths;
+
 SELECT Name, SchoolName, GradeDescription, HobbyType FROM Student
 JOIN StudentSchool USING(StudentId)
 JOIN School USING(SchoolId)

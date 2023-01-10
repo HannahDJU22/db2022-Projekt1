@@ -1,5 +1,5 @@
 # db2022-Projekt1
-Inlämning Projekt1
+Inlämning Projekt1 - Normalisering av databas
 
 ## ER-diagram
 
@@ -58,3 +58,7 @@ Grade ||--o{ StudentGrade : uses
 Hobby ||--|| HobbyTemp : uses
 PhoneList ||--|| PhoneNumber : uses
 ```
+
+## Instruktion  
+___
+> docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql

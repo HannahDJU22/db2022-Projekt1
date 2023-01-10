@@ -58,3 +58,11 @@ Grade |o--o{ StudentGrade : uses
 Hobby ||--|| HobbyTemp : uses
 PhoneList ||--|| PhoneNumber : uses
 ```
+
+## Instruktioner
+Kör scriptet till databasen
+```
+{
+docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql
+}
+```

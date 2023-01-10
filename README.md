@@ -59,6 +59,5 @@ Hobby ||--|| HobbyTemp : uses
 PhoneList ||--|| PhoneNumber : uses
 ```
 
-## Instruktion  
-___
+## Instruktion
 docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql

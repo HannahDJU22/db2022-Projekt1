@@ -60,4 +60,4 @@ PhoneList ||--|| PhoneNumber : uses
 ```
 
 ## Instruktion
-docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql
+	docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql

@@ -60,6 +60,11 @@ PhoneList ||--|| PhoneNumber : uses
 ```
 
 ## Instruktioner
+Kör git clone
+```
+https://github.com/HannahDJU22/db2022-Projekt1.git
+```
+
 Kör scriptet till databasen
 ```
 docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql

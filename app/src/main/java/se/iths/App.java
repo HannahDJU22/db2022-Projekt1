@@ -1,14 +1,34 @@
 package se.iths;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-@SpringBootApplication
+import static se.iths.Sql.*;
+
 public class App {
-    
+    public static Connection con = null;
+    //ResultSet rs = null;
 
-    public static void main(String[] args) {
-  SpringApplication.run(App.class);
+    public static void main(String[] args)  {
+        App app = new App();
+        Crud crud = new Crud();
+        try {
+            app.setUp();
+            crud.createNewGrade();
+            //crud.readStudentsInclSchoolAndGrade();
+            //crud.updateGradeForAStudent();
+            //crud.deleteStudent();
+            app.tearDown();
+        }catch(SQLException error){}
+    }
+
+    private void setUp() throws SQLException {
+        con = DriverManager.getConnection(JDBC_CONNECTION, JDBC_USER, JDBC_PASSWORD);
+    }
+    private void tearDown() throws SQLException {
+        con.close();
     }
 }

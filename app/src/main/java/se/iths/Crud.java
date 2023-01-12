@@ -1,8 +1,6 @@
 package se.iths;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -10,7 +8,9 @@ import static se.iths.Sql.*;
 
 public class Crud {
     public void createNewGrade() throws SQLException {
-        PreparedStatement stmtCreate = App.con.prepareStatement("INSERT INTO Grade(GradeDescription) VALUES (?)");
+        Connection connection = DriverManager.getConnection(JDBC_CONNECTION, JDBC_USER, JDBC_PASSWORD);
+        PreparedStatement stmtCreate = connection.prepareStatement("INSERT INTO Grade(GradeDescription) VALUES (?)");
+       // PreparedStatement stmtCreate = App.con.prepareStatement("INSERT INTO Grade(GradeDescription) VALUES (?)");
         stmtCreate.setString(1, "Supreme");
         stmtCreate.execute();
     }

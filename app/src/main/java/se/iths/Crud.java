@@ -46,18 +46,20 @@ public class Crud {
     }
     public void updateGradeForAStudent() throws SQLException{
         PreparedStatement stmtUpdate = App.con.prepareStatement("UPDATE StudentGrade Set GradeId = (?) WHERE StudentId = (?)");
-        stmtUpdate.setLong(1, 8); // här vill man ju använda sig av GradeId som ger Description
+        stmtUpdate.setLong(1, 8);
         stmtUpdate.setLong(2, 5);
         stmtUpdate.executeUpdate();
 
     }
     public void deleteStudent(){
         try{
-            PreparedStatement stmtDelete = App.con.prepareStatement("DELETE StudentId FROM Student WHERE StudentId = (?)");
-            stmtDelete.setLong(1, 2);
+            PreparedStatement stmtDelete = App.con.prepareStatement("DELETE FROM Student WHERE StudentId = (?)");
+            stmtDelete.setLong(1, 39);
             stmtDelete.execute();
         }
-        catch (SQLException e){}
+        catch (SQLException e){
+            System.out.println(e);
+        }
 
     }
 }

@@ -27,7 +27,7 @@ public class Student {
 
     @Override
     public String toString() {
-        return "StudentId and Name: " + getStudentId() + getName() + "School: " + schools + "Grade: " + grades;
+        return "StudentId and Name: " + getStudentId() + "-" + getName() +". " + schools + grades;
     }
 
     public void add(School school) {

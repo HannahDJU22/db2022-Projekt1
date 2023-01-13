@@ -33,6 +33,7 @@ public class Crud {
         student.add(new School(schoolId, schoolName));
         student.add(new Grade(gradeId, gradeName));
         }
+        rs.close();
         return students;
     }
     public void readStudentsInclSchoolAndGrade() throws SQLException {

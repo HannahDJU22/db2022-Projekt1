@@ -17,18 +17,20 @@ public class App {
         Crud crud = new Crud();
         try {
             app.setUp();
-            crud.createNewGrade();
-            //crud.readStudentsInclSchoolAndGrade();
+            //crud.createNewGrade();
+            crud.readStudentsInclSchoolAndGrade();
             //crud.updateGradeForAStudent();
             //crud.deleteStudent();
-            app.tearDown();
-        }catch(SQLException error){}
+            app.closeCon();
+        }catch(SQLException error){
+            System.out.println("This went wrong: " + error);
+        }
     }
 
     private void setUp() throws SQLException {
         con = DriverManager.getConnection(JDBC_CONNECTION, JDBC_USER, JDBC_PASSWORD);
     }
-    private void tearDown() throws SQLException {
+    private void closeCon() throws SQLException {
         con.close();
     }
 }

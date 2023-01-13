@@ -1,5 +1,5 @@
 # db2022-Projekt1
-Inlämning Projekt1 - Normalisering av databas
+Inlämning Projekt1 - Normalisering av databas samt en CRUD i Java
 
 ## ER-diagram
 
@@ -69,7 +69,7 @@ Kör scriptet till databasen
 ```
 docker exec -i iths-mysql mysql -uiths -piths < normalizering.sql
 ```
-Logga in i databasen (*för PC, kom ihåg winpty före docker*)
+Om du vill logga in i databasen och kika på ett exempel (*för PC, kom ihåg winpty före docker*)
 ```
 docker exec -it iths-mysql bash
 
@@ -86,4 +86,9 @@ JOIN StudentGrade USING(StudentId)
 JOIN Grade USING(GradeId)
 JOIN StudentHobby USING(StudentId)
 JOIN Hobby USING(HobbyId);
+```
+
+För att köra CRUD i Java
+```
+gradle run
 ```

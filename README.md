@@ -92,3 +92,6 @@ För att köra CRUD i Java
 ```
 gradle run
 ```
+Kör du gradle run ännu en gång så ser du att StudentId 5  
+fått sitt Grade uppdaterat till Supreme  
+samt att StudentId 39 raderats från vår lista

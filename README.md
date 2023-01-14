@@ -88,7 +88,7 @@ JOIN StudentHobby USING(StudentId)
 JOIN Hobby USING(HobbyId);
 ```
 
-För att köra CRUD i Java
+För att köra CRUD i Java (*kom ihåg att gå tillbaka till Git bash om du loggade in i databasen*)
 ```
 gradle run
 ```
